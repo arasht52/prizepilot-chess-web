@@ -1,5 +1,5 @@
 <!doctype html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://arasht52.github.io 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' https://arasht52.github.io 'unsafe-inline'; img-src 'self' https://arasht52.github.io data: blob:; font-src 'self' https://arasht52.github.io; worker-src 'self' blob:; connect-src 'self' https://arasht52.github.io https://prizepilot-chess-stage.onrender.com https://wybmzxnqlwhsutluvjeq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://arasht52.github.io https://cdn.jsdelivr.net 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' https://arasht52.github.io https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' https://arasht52.github.io https://cdn.jsdelivr.net data: blob:; font-src 'self' https://arasht52.github.io https://cdn.jsdelivr.net; worker-src 'self' blob:; connect-src 'self' https://arasht52.github.io https://cdn.jsdelivr.net https://prizepilot-chess-stage.onrender.com https://wybmzxnqlwhsutluvjeq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
 <script>
 (function(){
   if(!true)return;
@@ -28,13 +28,27 @@
   window.addEventListener('unhandledrejection',function(event){emit('error',errorCode(event.reason));});
   emit('html-parsed');
 })();
-</script>
+</script><script>(function(){
+  var P="https://arasht52.github.io/prizepilot-connection-test/chess-assets/",F="https://cdn.jsdelivr.net/gh/arasht52/prizepilot-connection-test@chess-stage-v2/chess-assets/",E="assets/chess-pages-BHZiqUgD.js";
+  function d(s,c){try{window.__PP_CHESS_DIAG__&&window.__PP_CHESS_DIAG__.emit(s,c);}catch(e){}}
+  // Resource errors don't bubble, so listen in the capture phase.
+  window.addEventListener('error',function(e){var t=e.target;if(t&&t!==window&&(t.tagName==='SCRIPT'||t.tagName==='LINK'))d('error',t.tagName==='SCRIPT'?'Error:module-load-failed':'Error:network-error');},true);
+  if(!F)return;
+  setTimeout(function(){
+    if(window.__PP_BOOTED__)return;
+    window.__PP_FALLBACK__=true;d('error','Error:timeout');
+    // A pending parser-inserted stylesheet blocks script execution, so swap the stuck ones for mirror copies.
+    var links=document.querySelectorAll('link[rel="stylesheet"]');
+    for(var i=0;i<links.length;i++){var l=links[i];if(l.href.indexOf(P)===0){var n=document.createElement('link');n.rel='stylesheet';n.crossOrigin='anonymous';n.href=F+l.href.slice(P.length);document.head.appendChild(n);l.parentNode.removeChild(l);}}
+    var s=document.createElement('script');s.type='module';s.crossOrigin='anonymous';s.src=F+E;document.head.appendChild(s);
+  },10000);
+})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="theme-color" content="#f5f3ed"/><title>PrizePilot Chess — Staging</title>
 <link rel="icon" href="/prizepilot-icon.svg"/>
-  <script type="module" crossorigin src="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/chess-pages-D0lL07GW.js"></script>
+  <script type="module" crossorigin src="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/chess-pages-BHZiqUgD.js"></script>
   <link rel="modulepreload" crossorigin href="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/vendor-react-Cj4mZ2oU.js">
   <link rel="modulepreload" crossorigin href="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/vendor-C1086Ijb.js">
   <link rel="modulepreload" crossorigin href="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/vendor-icons-PR4P3l-4.js">
-  <link rel="stylesheet" crossorigin href="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/chess-pages-BjQunTvA.css">
+  <link rel="stylesheet" crossorigin href="https://arasht52.github.io/prizepilot-connection-test/chess-assets/assets/chess-pages-B3fwGK6o.css">
 </head><body><div id="root"></div></body></html>
