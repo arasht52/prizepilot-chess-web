@@ -1,0 +1,6 @@
+Merida chess artwork by Armando Hernandez Marroquin. GPL-2.0-or-later.
+Unmodified original SVG files are provided in this directory.
+Pinned source: https://github.com/lichess-org/lila/tree/0320c1c34e216def355e7606c0af9a4011a106d7/public/piece/merida
+License attribution: https://github.com/lichess-org/lila/blob/0320c1c34e216def355e7606c0af9a4011a106d7/COPYING.md
+public/piece/merida | Armando Hernandez Marroquin | [GPLv2+](https://www.gnu.org/licenses/gpl-2.0.txt)
+Downloaded 2026-11-01. See COPYING.txt.

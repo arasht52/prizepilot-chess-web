@@ -1,0 +1,40 @@
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' https://prizepilot-chess-stage.onrender.com https://wybmzxnqlwhsutluvjeq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+<script>
+(function(){
+  if(!true)return;
+  var query=new URLSearchParams(location.search),hash=new URLSearchParams(location.hash.slice(1));
+  if(!location.pathname.startsWith('/chess')||!(query.get('miniapp')==='1'||hash.has('tgWebAppData')))return;
+  // Memory only: a fresh, unrelated UUID for each HTML document/launch.
+  var id;try{id=crypto.randomUUID();}catch{return;}
+  var start=performance.now(),sent=0,once=new Set();
+  var names=new Set(['Error','TypeError','SyntaxError','ReferenceError','RangeError','AbortError','TimeoutError','NetworkError']);
+  function errorCode(error){
+    var name=names.has(error&&error.name)?error.name:'Error';
+    // Classify, never transmit arbitrary error text, URLs, identifiers or stacks.
+    var text=typeof(error&&error.message)==='string'?error.message.replace(/https?:[^\s]+/gi,'').replace(/[?#][^\s]+/g,''):'';
+    var message=/module|import|chunk/i.test(text)?'module-load-failed':/fetch|network/i.test(text)?'network-error':/timeout|aborted/i.test(text)?'timeout':'unclassified';
+    return name+':'+message;
+  }
+  function emit(stage,code){
+    var key=stage+':'+(code||'');if(sent>=20||once.has(key))return;
+    once.add(key);sent++;
+    var payload={launchId:id,stage:stage,ms:Math.min(86400000,Math.max(0,Math.round(performance.now()-start)))};
+    if(code!==undefined)payload.code=String(code);
+    try{fetch('https://prizepilot-chess-stage.onrender.com/api/chess/miniapp/beacon',{method:'POST',credentials:'omit',keepalive:true,headers:{'content-type':'application/json','x-pp-chess-launch-id':id},body:JSON.stringify(payload)}).catch(function(){});}catch{}
+  }
+  window.__PP_CHESS_DIAG__={launchId:id,emit:emit,errorCode:errorCode};
+  window.addEventListener('error',function(event){if(event.error||event.message)emit('error',errorCode(event.error||{name:'Error',message:event.message}));});
+  window.addEventListener('unhandledrejection',function(event){emit('error',errorCode(event.reason));});
+  emit('html-parsed');
+})();
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#f5f3ed"/><title>PrizePilot Chess — Staging</title>
+<link rel="icon" href="/prizepilot-icon.svg"/>
+  <script type="module" crossorigin src="/assets/chess-pages-hXr7nElD.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-Cj4mZ2oU.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-C1086Ijb.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-icons-PR4P3l-4.js">
+  <link rel="stylesheet" crossorigin href="/assets/chess-pages-4HPtBVm1.css">
+</head><body><div id="root"></div></body></html>
